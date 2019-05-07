@@ -1,7 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 
-const Register = require("./register-model.js");
+const Users = require("../users-model.js");
 
 const router = express.Router();
 
@@ -13,7 +13,7 @@ router.post("/", (req, res) => {
   // pass > hash it > hash > hash it......
   // hash the password
   user.password = hash;
-  Register.add(user)
+  Users.add(user)
     .then(saved => {
       res.status(201).json(saved);
     })
