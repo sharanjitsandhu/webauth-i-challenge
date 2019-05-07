@@ -29,7 +29,8 @@ server.use("/api/login", loginRouter);
 server.use("/api/users", usersRouter);
 
 server.get("/", (req, res) => {
-  res.status(200).send("It's working...");
+  const username = req.session.username || "anonymous";
+  res.send(`Hello ${username}!`);
 });
 
 module.exports = server;
